@@ -9,13 +9,17 @@ import Testimonials from './src/components/Testimonials';
 import Download from './src/components/Download';
 import Footer from './src/components/Footer';
 import PrivacyPolicy from './src/components/PrivacyPolicy';
+import AccountDeletion from './src/components/AccountDeletion';
 
-type ViewState = 'home' | 'privacy';
+type ViewState = 'home' | 'privacy' | 'account-deletion';
 
 const App: React.FC = () => {
   // Initialize view based on current URL path
   const [view, setView] = useState<ViewState>(() => {
-    return window.location.pathname === '/privacy' ? 'privacy' : 'home';
+    const path = window.location.pathname;
+    if (path === '/privacy') return 'privacy';
+    if (path === '/account-deletion') return 'account-deletion';
+    return 'home';
   });
 
   // Listen for browser back/forward navigation
@@ -77,7 +81,7 @@ const App: React.FC = () => {
       <Navbar currentView={view} onNavigate={handleNavigate} />
       
       <main>
-        {view === 'home' ? (
+        {view === 'home' && (
           <>
             <Hero />
             <About />
@@ -87,8 +91,12 @@ const App: React.FC = () => {
             {/* <Testimonials /> */}
             <Download />
           </>
-        ) : (
+        )}
+        {view === 'privacy' && (
           <PrivacyPolicy onBack={() => handleNavigate('home')} />
+        )}
+        {view === 'account-deletion' && (
+          <AccountDeletion onBack={() => handleNavigate('home')} />
         )}
       </main>
 

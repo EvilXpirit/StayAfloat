@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Floatyicon from '../assets/floatyicon.png';
 
 interface NavbarProps {
-  currentView: 'home' | 'privacy';
-  onNavigate: (view: 'home' | 'privacy', targetSection?: string) => void;
+  currentView: 'home' | 'privacy' | 'account-deletion';
+  onNavigate: (view: 'home' | 'privacy' | 'account-deletion', targetSection?: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {

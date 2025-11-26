@@ -1,9 +1,9 @@
 import React from 'react';
-import { Anchor, Instagram, Twitter, Facebook, Mail } from 'lucide-react';
+import { Anchor, Instagram, Twitter, Mail } from 'lucide-react';
 import Floatyicon from '../assets/floatyicon.png';
 
 interface FooterProps {
-  onNavigate: (view: 'home' | 'privacy', targetSection?: string) => void;
+  onNavigate: (view: 'home' | 'privacy' | 'account-deletion', targetSection?: string) => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -68,6 +68,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-4 text-slate-500">
                 <li><button className="hover:text-primary-600 transition-colors text-left">Help Center</button></li>
                 <li><button onClick={() => onNavigate('privacy')} className="hover:text-primary-600 transition-colors text-left">Privacy Policy</button></li>
+                <li><button onClick={() => onNavigate('account-deletion')} className="hover:text-primary-600 transition-colors text-left">Delete Account</button></li>
                 <li><button className="hover:text-primary-600 transition-colors text-left">Terms of Service</button></li>
                 <li className="flex items-center gap-2">
                     <Mail className="w-4 h-4" /> contact@stayafloat.app
@@ -81,7 +82,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="flex gap-6 mt-4 md:mt-0">
                 <button onClick={() => onNavigate('privacy')} className="hover:text-primary-500">Privacy</button>
                 <button className="hover:text-primary-500">Terms</button>
-                <button className="hover:text-primary-500">Cookies</button>
+                <button onClick={() => onNavigate('account-deletion')} className="hover:text-primary-500">Delete Account</button>
             </div>
         </div>
       </div>
