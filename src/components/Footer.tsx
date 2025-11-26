@@ -1,5 +1,6 @@
 import React from 'react';
 import { Anchor, Instagram, Twitter, Facebook, Mail } from 'lucide-react';
+import Floatyicon from '../assets/floatyicon.png';
 
 interface FooterProps {
   onNavigate: (view: 'home' | 'privacy', targetSection?: string) => void;
@@ -12,8 +13,12 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
              <div className="flex items-center gap-2 mb-6 cursor-pointer" onClick={() => onNavigate('home')}>
-                <div className="bg-primary-500 p-1.5 rounded-lg">
-                    <Anchor className="w-5 h-5 text-white" />
+                <div className="drop-shadow-lg">
+                  <img 
+                    src={Floatyicon} 
+                    alt="logo" 
+                    className="w-12 h-12 object-contain"
+                  />
                 </div>
                 <span className="text-xl font-bold text-slate-800">StayAfloat</span>
              </div>
