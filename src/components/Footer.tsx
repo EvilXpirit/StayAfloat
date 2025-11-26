@@ -1,27 +1,25 @@
 import React from 'react';
 import { Anchor, Instagram, Twitter, Facebook, Mail } from 'lucide-react';
-import Floatyicon from '../assets/floatyicon.png';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (view: 'home' | 'privacy', targetSection?: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-slate-50 border-t border-slate-200 pt-16 pb-8">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-             <div className="flex items-center gap-2 mb-6">
-                <div className="drop-shadow-lg">
-                  <img 
-                    src={Floatyicon} 
-                    alt="logo" 
-                    className="w-12 h-12 object-contain"
-                  />
+             <div className="flex items-center gap-2 mb-6 cursor-pointer" onClick={() => onNavigate('home')}>
+                <div className="bg-primary-500 p-1.5 rounded-lg">
+                    <Anchor className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-xl font-bold text-slate-800">StayAfloat</span>
              </div>
              <p className="text-slate-500 max-w-sm mb-6">
                 Your daily wellness companion. Making mindfulness accessible, engaging, and part of your lifestyle.
              </p>
-
              {/* Social Links with actual URLs */}
              <div className="flex gap-4">
                 <a 
@@ -54,18 +52,18 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-slate-900 mb-6">Company</h4>
             <ul className="space-y-4 text-slate-500">
-                <li><a href="#" className="hover:text-primary-600 transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-primary-600 transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-primary-600 transition-colors">Press Kit</a></li>
+                <li><button onClick={() => onNavigate('home', '#about')} className="hover:text-primary-600 transition-colors text-left">About Us</button></li>
+                <li><button className="hover:text-primary-600 transition-colors text-left">Careers</button></li>
+                <li><button className="hover:text-primary-600 transition-colors text-left">Press Kit</button></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-slate-900 mb-6">Support</h4>
             <ul className="space-y-4 text-slate-500">
-                <li><a href="#" className="hover:text-primary-600 transition-colors">Help Center</a></li>
-                <li><a href="#" className="hover:text-primary-600 transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-primary-600 transition-colors">Terms of Service</a></li>
+                <li><button className="hover:text-primary-600 transition-colors text-left">Help Center</button></li>
+                <li><button onClick={() => onNavigate('privacy')} className="hover:text-primary-600 transition-colors text-left">Privacy Policy</button></li>
+                <li><button className="hover:text-primary-600 transition-colors text-left">Terms of Service</button></li>
                 <li className="flex items-center gap-2">
                     <Mail className="w-4 h-4" /> contact@stayafloat.app
                 </li>
@@ -76,9 +74,9 @@ const Footer: React.FC = () => {
         <div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-400">
             <p>&copy; {new Date().getFullYear()} StayAfloat Wellness Inc. All rights reserved.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="#">Cookies</a>
+                <button onClick={() => onNavigate('privacy')} className="hover:text-primary-500">Privacy</button>
+                <button className="hover:text-primary-500">Terms</button>
+                <button className="hover:text-primary-500">Cookies</button>
             </div>
         </div>
       </div>

@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Anchor } from 'lucide-react';
 import { NAV_LINKS } from '../../constants';
 import { motion, AnimatePresence } from 'framer-motion';
 import Floatyicon from '../assets/floatyicon.png';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  currentView: 'home' | 'privacy';
+  onNavigate: (view: 'home' | 'privacy', targetSection?: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -16,23 +21,15 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsOpen(false);
-    
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    
-    if (element) {
-      const headerOffset = 85;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+    onNavigate('home', href);
+  };
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+  const navigateHome = () => {
+    setIsOpen(false);
+    onNavigate('home');
   };
 
   return (
@@ -46,7 +43,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <div 
           className="flex items-center gap-2 cursor-pointer" 
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth'})}
+          onClick={navigateHome}
         >
           <div className="drop-shadow-lg">
             <img 
@@ -66,7 +63,7 @@ const Navbar: React.FC = () => {
             <a
               key={link.label}
               href={link.href}
-              onClick={(e) => handleScrollTo(e, link.href)}
+              onClick={(e) => handleLinkClick(e, link.href)}
               className="text-slate-600 hover:text-primary-600 font-medium transition-colors"
             >
               {link.label}
@@ -74,7 +71,7 @@ const Navbar: React.FC = () => {
           ))}
           <a
             href="#download"
-            onClick={(e) => handleScrollTo(e, '#download')}
+            onClick={(e) => handleLinkClick(e, '#download')}
             className="bg-slate-900 text-white px-6 py-2.5 rounded-full font-medium hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20"
           >
             Get App
@@ -104,7 +101,7 @@ const Navbar: React.FC = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  onClick={(e) => handleScrollTo(e, link.href)}
+                  onClick={(e) => handleLinkClick(e, link.href)}
                   className="text-lg font-medium text-slate-700 py-2 border-b border-slate-100"
                 >
                   {link.label}
@@ -112,7 +109,7 @@ const Navbar: React.FC = () => {
               ))}
               <a
                 href="#download"
-                onClick={(e) => handleScrollTo(e, '#download')}
+                onClick={(e) => handleLinkClick(e, '#download')}
                 className="bg-primary-600 text-white text-center py-3 rounded-xl font-bold shadow-lg shadow-primary-600/20 mt-2"
               >
                 Download Free
