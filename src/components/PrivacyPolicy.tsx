@@ -125,6 +125,30 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
             </section>
 
             <section>
+              <h2 className="text-xl font-bold text-slate-900 mb-4">Local Data Storage and Privacy</h2>
+              <p className="mb-4">
+                Your personal data and sensitive information are of utmost importance to us. The StayAfloat Application is designed with privacy-first principles to ensure that your personal information remains completely under your control.
+              </p>
+              <p className="mb-4">
+                <strong>All of the following data is stored locally on your device and never transmitted to our servers:</strong>
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mb-4 bg-slate-50 p-6 rounded-2xl">
+                <li>Mood Records and History</li>
+                <li>Journal entries and personal notes</li>
+                <li>Chat bot conversation history</li>
+                <li>User activity logs and interactions within the app</li>
+                <li>Personal preferences and settings</li>
+                <li>Any other personally identifiable information you input into the app</li>
+              </ul>
+              <p className="mb-4">
+                This data remains exclusively on your device and is not stored on external servers, cloud services, or shared with third parties. You have complete control over this data and can delete it at any time by uninstalling the Application.
+              </p>
+              <p>
+                <strong>User privacy is our utmost priority.</strong> We believe that your personal journey, thoughts, and activities should remain private and secure. The Service Provider is committed to maintaining the highest standards of data protection and confidentiality.
+              </p>
+            </section>
+
+            <section>
               <h2 className="text-xl font-bold text-slate-900 mb-4">Security</h2>
               <p>
                 The Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, and procedural safeguards to protect information the Service Provider processes and maintains.
