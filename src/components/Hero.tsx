@@ -76,7 +76,9 @@ const Hero: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
                 <a 
-                  href="#download"
+                  href="https://play.google.com/store/apps/details?id=com.stay.afloat"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-2xl transition-all shadow-xl shadow-slate-900/20 transform hover:-translate-y-1"
                 >
                    <Play className="w-6 h-6 fill-current" />

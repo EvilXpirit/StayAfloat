@@ -31,7 +31,9 @@ const Download: React.FC = () => {
             <motion.a 
                whileHover={{ scale: 1.05 }}
                whileTap={{ scale: 0.95 }}
-               href="#"
+                  href="https://play.google.com/store/apps/details?id=com.stay.afloat"
+                  target="_blank"
+                  rel="noopener noreferrer"
                className="inline-flex items-center gap-4 bg-white text-slate-900 px-8 py-4 rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all"
             >
                 <Play className="w-6 h-6 fill-slate-900" />
