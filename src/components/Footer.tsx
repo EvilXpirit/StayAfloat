@@ -70,9 +70,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <li><button onClick={() => onNavigate('privacy')} className="hover:text-primary-600 transition-colors text-left">Privacy Policy</button></li>
                 <li><button onClick={() => onNavigate('account-deletion')} className="hover:text-primary-600 transition-colors text-left">Delete Account</button></li>
                 <li><button className="hover:text-primary-600 transition-colors text-left">Terms of Service</button></li>
-                <li className="flex items-center gap-2">
+                {/* <li className="flex items-center gap-2">
                     <Mail className="w-4 h-4" /> contact@stayafloat.app
-                </li>
+                </li> */}
             </ul>
           </div>
         </div>

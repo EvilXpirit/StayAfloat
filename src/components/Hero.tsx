@@ -83,8 +83,8 @@ const Hero: React.FC = () => {
                 >
                    <Play className="w-6 h-6 fill-current" />
                    <div className="text-left">
-                     {/* <div className="text-xs opacity-80 uppercase tracking-wider font-semibold">Get it on</div> */}
-                     <div className="text-xs opacity-80 uppercase tracking-wider font-semibold">Coming Soon On</div>
+                     <div className="text-xs opacity-80 uppercase tracking-wider font-semibold">Get it on</div>
+                     {/* <div className="text-xs opacity-80 uppercase tracking-wider font-semibold">Coming Soon On</div> */}
                      <div className="text-xl font-bold leading-none">Google Play</div>
                    </div>
                 </a>
