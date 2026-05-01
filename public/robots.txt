@@ -1,0 +1,10 @@
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://stayafloat.vercel.app/sitemap.xml
+
+# Disallow crawling of any admin or private areas (if applicable)
+# Disallow: /admin/
+# Disallow: /private/

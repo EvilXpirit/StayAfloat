@@ -1,0 +1,42 @@
+{
+  "name": "StayAfloat - Mental Wellness & Mindfulness App",
+  "short_name": "StayAfloat",
+  "description": "Your daily companion for mental health and emotional wellness. Features breathing exercises, mood tracking, gratitude journal, and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0284c7",
+  "orientation": "portrait",
+  "categories": ["health", "lifestyle", "wellness"],
+  "icons": [
+    {
+      "src": "/floatyicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/floatyicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/homepage2.png",
+      "sizes": "1170x2532",
+      "type": "image/png"
+    },
+    {
+      "src": "/screenshots/Journalscreen.png",
+      "sizes": "1170x2532",
+      "type": "image/png"
+    },
+    {
+      "src": "/screenshots/affirmation.png",
+      "sizes": "1170x2532",
+      "type": "image/png"
+    }
+  ]
+}

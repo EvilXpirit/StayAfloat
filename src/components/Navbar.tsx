@@ -70,8 +70,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
             </a>
           ))}
           <a
-            href="#download"
-            onClick={(e) => handleLinkClick(e, '#download')}
+            href="https://play.google.com/store/apps/details?id=com.stay.afloat"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-slate-900 text-white px-6 py-2.5 rounded-full font-medium hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20"
           >
             Get App
@@ -108,8 +109,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                 </a>
               ))}
               <a
-                href="#download"
-                onClick={(e) => handleLinkClick(e, '#download')}
+                href="https://play.google.com/store/apps/details?id=com.stay.afloat"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-primary-600 text-white text-center py-3 rounded-xl font-bold shadow-lg shadow-primary-600/20 mt-2"
               >
                 Download Free
