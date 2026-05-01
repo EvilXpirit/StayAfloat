@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Star } from 'lucide-react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const Hero: React.FC = () => {
   // Array of images for the carousel - Add your screenshot paths here
@@ -18,6 +19,34 @@ const Hero: React.FC = () => {
   // State to track current image index
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Lottie cover sizing — compute 16:9 dimensions that always cover the section
+  const sectionRef = useRef<HTMLElement>(null);
+  const [coverDims, setCoverDims] = useState({ width: '177.78vh', height: '100vh' });
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const AR = 16 / 9;
+    const update = () => {
+      const w = el.offsetWidth;
+      const AR = 16 / 9;
+      // Mobile: cap effective height to 68vh so clouds land just below the CTA button
+      const isMob = w < 768;
+      setIsMobile(isMob);
+      const h = isMob ? window.innerHeight * 0.68 : el.offsetHeight;
+      // Cover formula: canvas must be >= container in both axes at 16:9
+      const cw = Math.ceil(Math.max(w, h * AR));
+      const ch = Math.ceil(cw / AR);
+      setCoverDims({ width: `${cw}px`, height: `${ch}px` });
+    };
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    window.addEventListener('resize', update);
+    update();
+    return () => { ro.disconnect(); window.removeEventListener('resize', update); };
+  }, []);
+
   // Auto-advance carousel effect
   useEffect(() => {
     // Set interval for automatic slide transition (3 seconds)
@@ -33,22 +62,35 @@ const Hero: React.FC = () => {
   }, [images.length]);
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-gradient-to-b from-blue-50 via-purple-50 to-white">
-      {/* Background Blobs */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <motion.div 
-            animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary-200/40 rounded-full blur-3xl" 
-        />
-        <motion.div 
-            animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-secondary-200/40 rounded-full blur-3xl" 
-        />
+    <section
+      ref={sectionRef}
+      className="relative min-h-[50vh] md:min-h-screen overflow-hidden"
+      style={{ background: '#FFFFFF' }}
+    >
+      {/* Night Sky Lottie Background — top-aligned so clouds land at wrapper bottom */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 right-0 h-[68vh] md:h-full overflow-hidden">
+<DotLottieReact
+  src="/NightStars.lottie"
+  loop
+  autoplay
+  renderConfig={{ autoResize: true }}
+  style={{
+    position: 'absolute',
+    top: 0,
+    left: isMobile ? '-30%' : '50%',
+    width: coverDims.width,
+    height: coverDims.height,
+    // Add scaleX(-1) to flip horizontally, or scaleY(-1) to flip vertically
+    transform: isMobile 
+      ? 'scaleX(-1)' 
+      : 'translateX(-50%) scaleX(-1)', 
+  }}
+/>
+        </div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-20 pt-24 pb-8 md:pt-44 md:pb-32">
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
           
           {/* Text Content */}
@@ -58,19 +100,19 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm border border-white/50 rounded-full mb-6 shadow-sm">
-                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                <span className="text-sm font-semibold text-slate-700">#1 Emerging Wellness App</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full mb-6 shadow-sm">
+                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                <span className="text-sm font-semibold text-white">#1 Emerging Wellness App</span>
               </div>
               
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-slate-900 mb-6">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-white mb-6">
                 Find Balance. <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-indigo-300">
                   Stay Afloat.
                 </span>
               </h1>
               
-              <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/75 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
                 Your daily sanctuary for mindfulness, breathing, and emotional balance. Drift away from stress with Floaty.
               </p>
 
@@ -79,7 +121,7 @@ const Hero: React.FC = () => {
                   href="https://play.google.com/store/apps/details?id=com.stay.afloat"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-2xl transition-all shadow-xl shadow-slate-900/20 transform hover:-translate-y-1"
+                  className="flex items-center gap-3 bg-white text-slate-900 hover:bg-white/90 px-8 py-4 rounded-2xl transition-all shadow-2xl shadow-black/30 transform hover:-translate-y-1"
                 >
                    <Play className="w-6 h-6 fill-current" />
                    <div className="text-left">

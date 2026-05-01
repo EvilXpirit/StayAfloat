@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
               className="w-12 h-12 object-contain"
             />
           </div>
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-600">
+          <span className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r transition-all duration-300 ${scrolled ? 'from-slate-800 to-slate-600' : 'from-white to-purple-200'}`}>
             StayAfloat
           </span>
         </div>
@@ -64,7 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
               key={link.label}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className="text-slate-600 hover:text-primary-600 font-medium transition-colors"
+              className={`font-medium transition-colors ${scrolled ? 'text-slate-600 hover:text-primary-600' : 'text-white/85 hover:text-white'}`}
             >
               {link.label}
             </a>
@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
             href="https://play.google.com/store/apps/details?id=com.stay.afloat"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-slate-900 text-white px-6 py-2.5 rounded-full font-medium hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20"
+            className={`px-6 py-2.5 rounded-full font-medium transition-all shadow-lg ${scrolled ? 'bg-slate-900 text-white hover:bg-slate-800 shadow-slate-900/20' : 'bg-white text-slate-900 hover:bg-white/90 shadow-black/20'}`}
           >
             Get App
           </a>
@@ -81,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-slate-700 p-2"
+          className={`md:hidden p-2 transition-colors ${scrolled ? 'text-slate-700' : 'text-white'}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X /> : <Menu />}
