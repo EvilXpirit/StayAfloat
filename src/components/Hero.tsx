@@ -102,7 +102,8 @@ const Hero: React.FC = () => {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full mb-6 shadow-sm">
                 <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                <span className="text-sm font-semibold text-white">#1 Emerging Wellness App</span>
+                {/* <span className="text-sm font-semibold text-white">#1 Emerging Wellness App</span> */}
+                 <span className="text-sm font-semibold text-white">Ultimate Wellness Toolkit</span>
               </div>
               
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-white mb-6">
