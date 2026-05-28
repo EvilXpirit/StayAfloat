@@ -36,14 +36,14 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
             </div>
             <div>
                 <h1 className="text-3xl md:text-4xl font-bold text-slate-900">Privacy Policy</h1>
-                <p className="text-slate-500 mt-1">Effective date: 2025-11-26</p>
+                <p className="text-slate-500 mt-1">Effective date: 2026-05-18</p>
             </div>
           </div>
 
           <div className="space-y-8 text-slate-600 leading-relaxed">
             <section>
               <p>
-                This privacy policy applies to the StayAfloat app (hereby referred to as "Application") for mobile devices that was created by Aditya Sharma (hereby referred to as "Service Provider") as an Ad Supported service. This service is intended for use "AS IS".
+                This privacy policy applies to the StayAfloat app (hereby referred to as "Application") for mobile devices that was created by Aditya Sharma (hereby referred to as "Service Provider") as a Free service. This service is intended for use "AS IS".
               </p>
             </section>
 
@@ -67,7 +67,6 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
               <ul className="list-disc pl-6 space-y-2 mb-4">
                 <li><strong>Geolocation Services:</strong> The Service Provider utilizes location data to provide features such as personalized content, relevant recommendations, and location-based services.</li>
                 <li><strong>Analytics and Improvements:</strong> Aggregated and anonymized location data helps the Service Provider to analyze user behavior, identify trends, and improve the overall performance and functionality of the Application.</li>
-                <li><strong>Third-Party Services:</strong> Periodically, the Service Provider may transmit anonymized location data to external services. These services assist them in enhancing the Application and optimizing their offerings.</li>
               </ul>
               <p>
                 The Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.
@@ -80,23 +79,12 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
             <section>
               <h2 className="text-xl font-bold text-slate-900 mb-4">Third Party Access</h2>
               <p className="mb-4">
-                Only aggregated, anonymized data is periodically transmitted to external services to aid the Service Provider in improving the Application and their service. The Service Provider may share your information with third parties in the ways that are described in this privacy statement.
+                The Service Provider does not share, sell, or transmit any of your personal data or information to third-party services. All your data remains strictly on your device.
               </p>
-              <p className="mb-4">
-                Please note that the Application utilizes third-party services that have their own Privacy Policy about handling data. Below are the links to the Privacy Policy of the third-party service providers used by the Application:
-              </p>
-              <ul className="list-disc pl-6 mb-4">
-                <li>
-                  <a href="https://support.google.com/admob/answer/6128543?hl=en" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline font-medium">
-                    AdMob
-                  </a>
-                </li>
-              </ul>
-              <p className="mb-4">The Service Provider may disclose User Provided and Automatically Collected Information:</p>
+              <p className="mb-4">The Service Provider may only disclose User Provided and Automatically Collected Information:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>as required by law, such as to comply with a subpoena, or similar legal process;</li>
-                <li>when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;</li>
-                <li>with their trusted services providers who work on their behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.</li>
+                <li>when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request.</li>
               </ul>
             </section>
 
