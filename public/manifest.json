@@ -1,7 +1,7 @@
 {
-  "name": "StayAfloat - Mental Wellness & Mindfulness App",
+  "name": "StayAfloat - Mental Wellness, Habit Builder & Mindfulness App",
   "short_name": "StayAfloat",
-  "description": "Your daily companion for mental health and emotional wellness. Features breathing exercises, mood tracking, gratitude journal, and more.",
+  "description": "Your daily companion for mental health & wellness. Build habits that stick, track hydration, play mindful mini-games, practice breathing exercises, track mood, and explore 5000+ affirmations.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

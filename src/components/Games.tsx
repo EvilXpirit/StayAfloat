@@ -3,6 +3,18 @@ import { GAMES } from '../../constants';
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 
+import floatyDriftImg from '../assets/games/floatyDrift.jpg';
+import upliftImg from '../assets/games/Uplift.jpg';
+import groundMeImg from '../assets/games/groundMe.jpg';
+import calmGardenImg from '../assets/games/CalmGarden.jpg';
+
+const gameImages: Record<number, string> = {
+  1: floatyDriftImg,
+  2: upliftImg,
+  3: groundMeImg,
+  4: calmGardenImg,
+};
+
 const Games: React.FC = () => {
   return (
     <section id="games" className="py-24 bg-white">
@@ -29,7 +41,7 @@ const Games: React.FC = () => {
             >
               {/* Card Background Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${game.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-              
+
               <div className="p-8 md:p-10 flex flex-col h-full relative z-10">
                 <div className="flex justify-between items-start mb-6">
                   <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${game.color} flex items-center justify-center text-white shadow-lg`}>
@@ -50,17 +62,17 @@ const Games: React.FC = () => {
                 </p>
 
                 {/* Simulated Screen Preview */}
-                <div className="mt-auto w-full aspect-[2/1] bg-slate-200 rounded-xl overflow-hidden relative group-hover:translate-y-[-5px] transition-transform duration-500">
-                    <img 
-                        src={`https://picsum.photos/600/300?random=${game.id + 10}`} 
-                        alt={game.title} 
-                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="w-12 h-12 bg-white/30 backdrop-blur rounded-full flex items-center justify-center">
+                <div className="mt-auto w-full aspect-[1.2/1] bg-slate-200 rounded-xl overflow-hidden relative group-hover:translate-y-[-5px] transition-transform duration-500">
+                  <img
+                    src={gameImages[game.id]}
+                    alt={game.title}
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                    {/* <div className="w-12 h-12 bg-white/30 backdrop-blur rounded-full flex items-center justify-center">
                             <Play className="w-5 h-5 text-white fill-white ml-1" />
-                        </div>
-                    </div>
+                        </div> */}
+                  </div>
                 </div>
               </div>
             </motion.div>

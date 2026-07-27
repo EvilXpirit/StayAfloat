@@ -10,7 +10,9 @@ import {
   Gamepad2,
   Leaf,
   Anchor,
-  Cloud
+  Cloud,
+  CalendarCheck,
+  Droplets
 } from 'lucide-react';
 
 export const NAV_LINKS = [
@@ -26,6 +28,24 @@ export const FEATURES = [
     description: 'Guided sessions with calming animations tailored to your needs.',
     icon: Wind,
     color: 'bg-blue-100 text-blue-600',
+  },
+  {
+    title: 'Habit Builder',
+    description: 'Build routines that stick — track daily habits, watch your streaks grow and celebrate every small win.',
+    icon: CalendarCheck,
+    color: 'bg-violet-100 text-violet-600',
+  },
+  {
+    title: 'Mindful Mini-Games',
+    description: 'Playful, interactive games designed to ease anxiety, boost joy, and cultivate focus.',
+    icon: Gamepad2,
+    color: 'bg-fuchsia-100 text-fuchsia-600',
+  },
+  {
+    title: 'Water Tracker',
+    description: 'Stay refreshed and energized with simple daily reminders to reach your hydration goals.',
+    icon: Droplets,
+    color: 'bg-sky-100 text-sky-600',
   },
   {
     title: '5000+ Affirmations',

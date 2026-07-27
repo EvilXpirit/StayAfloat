@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     // Set interval for automatic slide transition (3 seconds)
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         // Loop back to first image after reaching the end
         (prevIndex + 1) % images.length
       );
@@ -70,29 +70,29 @@ const Hero: React.FC = () => {
       {/* Night Sky Lottie Background — top-aligned so clouds land at wrapper bottom */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 right-0 h-[68vh] md:h-full overflow-hidden">
-<DotLottieReact
-  src="/NightStars.lottie"
-  loop
-  autoplay
-  renderConfig={{ autoResize: true }}
-  style={{
-    position: 'absolute',
-    top: 0,
-    left: isMobile ? '-30%' : '50%',
-    width: coverDims.width,
-    height: coverDims.height,
-    // Add scaleX(-1) to flip horizontally, or scaleY(-1) to flip vertically
-    transform: isMobile 
-      ? 'scaleX(-1)' 
-      : 'translateX(-50%) scaleX(-1)', 
-  }}
-/>
+          <DotLottieReact
+            src="/NightStars.lottie"
+            loop
+            autoplay
+            renderConfig={{ autoResize: true }}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: isMobile ? '-30%' : '50%',
+              width: coverDims.width,
+              height: coverDims.height,
+              // Add scaleX(-1) to flip horizontally, or scaleY(-1) to flip vertically
+              transform: isMobile
+                ? 'scaleX(-1)'
+                : 'translateX(-50%) scaleX(-1)',
+            }}
+          />
         </div>
       </div>
 
       <div className="container mx-auto px-6 relative z-20 pt-24 pb-8 md:pt-44 md:pb-32">
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-          
+
           {/* Text Content */}
           <div className="flex-1 text-center md:text-left">
             <motion.div
@@ -103,33 +103,33 @@ const Hero: React.FC = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full mb-6 shadow-sm">
                 <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                 {/* <span className="text-sm font-semibold text-white">#1 Emerging Wellness App</span> */}
-                 <span className="text-sm font-semibold text-white">Ultimate Wellness Toolkit</span>
+                <span className="text-sm font-semibold text-white">Ultimate Wellness Toolkit</span>
               </div>
-              
+
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-white mb-6">
                 Find Balance. <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-indigo-300">
                   Stay Afloat.
                 </span>
               </h1>
-              
+
               <p className="text-lg md:text-xl text-white/75 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
                 Your daily sanctuary for mindfulness, breathing, and emotional balance. Drift away from stress with Floaty.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                <a 
+                <a
                   href="https://play.google.com/store/apps/details?id=com.stay.afloat"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 bg-white text-slate-900 hover:bg-white/90 px-8 py-4 rounded-2xl transition-all shadow-2xl shadow-black/30 transform hover:-translate-y-1"
                 >
-                   <Play className="w-6 h-6 fill-current" />
-                   <div className="text-left">
-                     <div className="text-xs opacity-80 uppercase tracking-wider font-semibold">Get it on</div>
-                     {/* <div className="text-xs opacity-80 uppercase tracking-wider font-semibold">Coming Soon On</div> */}
-                     <div className="text-xl font-bold leading-none">Google Play</div>
-                   </div>
+                  <Play className="w-6 h-6 fill-current" />
+                  <div className="text-left">
+                    <div className="text-xs opacity-80 uppercase tracking-wider font-semibold">Get it on</div>
+                    {/* <div className="text-xs opacity-80 uppercase tracking-wider font-semibold">Coming Soon On</div> */}
+                    <div className="text-xl font-bold leading-none">Google Play</div>
+                  </div>
                 </a>
               </div>
             </motion.div>
@@ -137,77 +137,77 @@ const Hero: React.FC = () => {
 
           {/* Phone Mockup with Crossfade Carousel */}
           <div className="flex-1 w-full flex justify-center md:justify-end relative">
-             <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative z-10 w-64 md:w-80"
-             >
-                {/* Simulated Phone Frame */}
-                <motion.div 
-                    animate={{ y: [0, -15, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                    className="bg-slate-900 rounded-[3rem] p-2 shadow-2xl border-4 border-slate-800"
-                >
-                    {/* Phone Screen Container - Images overlay on top of each other */}
-                    <div className="bg-slate-800 rounded-[2.5rem] overflow-hidden relative aspect-[9/19]">
-                         {/* AnimatePresence without mode="wait" allows overlapping animations */}
-                         <AnimatePresence>
-                            <motion.img 
-                                key={currentIndex} // Key change triggers animation
-                                src={images[currentIndex]}
-                                alt={`StayAfloat App Screen ${currentIndex + 1}`}
-                                className="w-full h-full object-cover opacity-90 absolute inset-0"
-                                // Entry - fade in from invisible
-                                initial={{ opacity: 0 }}
-                                // Active - fully visible
-                                animate={{ opacity: 0.9 }}
-                                // Exit - fade out (overlaps with next image fading in)
-                                exit={{ opacity: 0 }}
-                                // Smooth crossfade transition
-                                transition={{ 
-                                  duration: 1, // 1 second fade duration
-                                  ease: "easeInOut" 
-                                }}
-                            />
-                         </AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative z-10 w-64 md:w-80"
+            >
+              {/* Simulated Phone Frame */}
+              <motion.div
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="bg-slate-900 rounded-[3rem] p-2 shadow-2xl border-4 border-slate-800"
+              >
+                {/* Phone Screen Container - Images overlay on top of each other */}
+                <div className="bg-slate-800 rounded-[2.5rem] overflow-hidden relative aspect-[9/19]">
+                  {/* AnimatePresence without mode="wait" allows overlapping animations */}
+                  <AnimatePresence>
+                    <motion.img
+                      key={currentIndex} // Key change triggers animation
+                      src={images[currentIndex]}
+                      alt={`StayAfloat App Screen ${currentIndex + 1}`}
+                      className="w-full h-full object-cover opacity-90 absolute inset-0"
+                      // Entry - fade in from invisible
+                      initial={{ opacity: 0 }}
+                      // Active - fully visible
+                      animate={{ opacity: 0.9 }}
+                      // Exit - fade out (overlaps with next image fading in)
+                      exit={{ opacity: 0 }}
+                      // Smooth crossfade transition
+                      transition={{
+                        duration: 1, // 1 second fade duration
+                        ease: "easeInOut"
+                      }}
+                    />
+                  </AnimatePresence>
 
-                         {/* Gloss Overlay */}
-                         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none z-10"></div>
-                         
-                         {/* OPTIONAL: Floating UI Elements inside phone (Simulated) */}
-                         {/* <div className="absolute top-12 left-4 right-4 bg-white/20 backdrop-blur-md p-4 rounded-xl border border-white/20 z-20">
+                  {/* Gloss Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none z-10"></div>
+
+                  {/* OPTIONAL: Floating UI Elements inside phone (Simulated) */}
+                  {/* <div className="absolute top-12 left-4 right-4 bg-white/20 backdrop-blur-md p-4 rounded-xl border border-white/20 z-20">
                             <div className="h-2 w-1/3 bg-white/60 rounded mb-2"></div>
                             <div className="h-8 w-3/4 bg-white rounded"></div>
                          </div> */}
 
-                         {/* <div className="absolute bottom-20 left-4 right-4 flex gap-2 z-20">
+                  {/* <div className="absolute bottom-20 left-4 right-4 flex gap-2 z-20">
                              <div className="h-16 w-1/2 bg-indigo-500/80 backdrop-blur rounded-2xl"></div>
                              <div className="h-16 w-1/2 bg-sky-500/80 backdrop-blur rounded-2xl"></div>
                          </div> */}
-                    </div>
-                </motion.div>
-                
-                {/* Decorative floating elements behind phone */}
-                <motion.div 
-                    animate={{ y: [0, 20, 0], rotate: [0, 5, 0] }}
-                    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    className="absolute top-20 -right-8 w-20 h-20 bg-white rounded-2xl shadow-xl p-4 flex items-center justify-center z-20"
-                >
-                    <Star className="w-10 h-10 text-yellow-400 fill-yellow-400" />
-                </motion.div>
+                </div>
+              </motion.div>
 
-                <motion.div 
-                    animate={{ y: [0, -25, 0], rotate: [0, -5, 0] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                    className="absolute bottom-32 -left-8 w-auto px-6 py-4 bg-white rounded-2xl shadow-xl z-20"
-                >
-                    <div className="flex items-center gap-3">
-                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                        <span className="font-bold text-slate-800">Feeling Calm</span>
-                    </div>
-                </motion.div>
-             </motion.div>
+              {/* Decorative floating elements behind phone */}
+              <motion.div
+                animate={{ y: [0, 20, 0], rotate: [0, 5, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute top-20 -right-8 w-20 h-20 bg-white rounded-2xl shadow-xl p-4 flex items-center justify-center z-20"
+              >
+                <Star className="w-10 h-10 text-yellow-400 fill-yellow-400" />
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, -25, 0], rotate: [0, -5, 0] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute bottom-32 -left-8 w-auto px-6 py-4 bg-white rounded-2xl shadow-xl z-20"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <span className="font-bold text-slate-800">Feeling Calm</span>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
 
         </div>
